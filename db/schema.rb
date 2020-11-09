@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2020_11_09_173231) do
 
   create_table "projects", force: :cascade do |t|
     t.string "name"
-    t.time "time"
+    t.integer "time"
     t.integer "importance"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2020_11_09_173231) do
 
   create_table "tasks", force: :cascade do |t|
     t.string "name"
-    t.time "time"
+    t.integer "time"
     t.integer "project_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
