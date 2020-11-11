@@ -8,6 +8,11 @@ class ProjectsController < ApplicationController
 
     def create
 
+        project = Project.create(project_params)
+
+
+        render json: project
+
     end
 
     def destroy
@@ -19,6 +24,6 @@ class ProjectsController < ApplicationController
     private 
 
     def project_params 
-        params.require(:project).permit(:name, :time, :importance)
+        params.require(:project).permit(:name, :time, :importance, :task)
     end
 end
