@@ -1,7 +1,22 @@
 class TasksController < ApplicationController
 
-    def index 
+    def show 
+        task = Task.find_by(params[:id])
         
+        render json: task
+    end
+    
+    def index 
+        tasks = Task.all 
+
+        render json: tasks
+    end
+
+    def create 
+
+        task = Task.create(task_params)
+
+        render json: task
     end
 
     def destroy
