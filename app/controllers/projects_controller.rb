@@ -1,5 +1,12 @@
 class ProjectsController < ApplicationController
 
+
+    def show
+        project = Project.find_by(params[:id])
+
+        render json: project
+    end
+
     def index
         projects = Project.all
 
@@ -8,6 +15,19 @@ class ProjectsController < ApplicationController
 
     def create
 
+        project = Project.create(project_params)
+
+
+        render json: project
+
+    end
+
+    def update
+        project = Project.find(params[:id])
+
+        project.update(project_params)
+
+        render json: project
     end
 
     def destroy
@@ -19,6 +39,6 @@ class ProjectsController < ApplicationController
     private 
 
     def project_params 
-        params.require(:project).permit(:name, :time, :importance)
+        params.require(:project).permit(:name, :time, :importance, :task)
     end
 end
