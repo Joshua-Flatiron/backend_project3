@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
     def show
         project = Project.find_by(params[:id])
 
-        render json: project
+        render json: project, include: :tasks, except: [:created_at, :updated_at]
     end
 
     def index
@@ -34,6 +34,8 @@ class ProjectsController < ApplicationController
         project = Project.find(params[:id])
 
         project.destroy
+
+        render json: project 
     end
 
     private 
